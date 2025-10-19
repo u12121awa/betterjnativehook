@@ -24,10 +24,10 @@
 #include "jni_Errors.h"
 #include "jni_Globals.h"
 #include "jni_Logger.h"
-#include "com_github_kwhat_jnativehook_NativeInputEvent.h"
-#include "com_github_kwhat_jnativehook_keyboard_NativeKeyEvent.h"
-#include "com_github_kwhat_jnativehook_mouse_NativeMouseEvent.h"
-#include "com_github_kwhat_jnativehook_mouse_NativeMouseWheelEvent.h"
+#include "include/com_github_kwhat_jnativehook_NativeInputEvent.h"
+#include "include/com_github_kwhat_jnativehook_keyboard_NativeKeyEvent.h"
+#include "include/com_github_kwhat_jnativehook_mouse_NativeMouseEvent.h"
+#include "include/com_github_kwhat_jnativehook_mouse_NativeMouseWheelEvent.h"
 
 // Simple function to notify() the hook thread.
 static inline void notifyHookThread(JNIEnv *env) {
@@ -69,6 +69,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                             com_github_kwhat_jnativehook_keyboard_NativeKeyEvent->init,
                             com_github_kwhat_jnativehook_keyboard_NativeKeyEvent_NATIVE_KEY_PRESSED,
                             (jint) event->mask,
+                            (jint) event->extraInfo,
                             (jint) event->data.keyboard.rawcode,
                             (jint) event->data.keyboard.keycode,
                             (jchar) com_github_kwhat_jnativehook_keyboard_NativeKeyEvent_CHAR_UNDEFINED,
@@ -85,6 +86,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                                 com_github_kwhat_jnativehook_keyboard_NativeKeyEvent->init,
                                 com_github_kwhat_jnativehook_keyboard_NativeKeyEvent_NATIVE_KEY_RELEASED,
                                 (jint) event->mask,
+                                (jint) event->extraInfo,
                                 (jint) event->data.keyboard.rawcode,
                                 (jint) event->data.keyboard.keycode,
                                 (jchar) com_github_kwhat_jnativehook_keyboard_NativeKeyEvent_CHAR_UNDEFINED,
@@ -99,6 +101,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                             com_github_kwhat_jnativehook_keyboard_NativeKeyEvent->init,
                             com_github_kwhat_jnativehook_keyboard_NativeKeyEvent_NATIVE_KEY_TYPED,
                             (jint) event->mask,
+                            (jint) event->extraInfo,
                             (jint) event->data.keyboard.rawcode,
                             (jint) com_github_kwhat_jnativehook_keyboard_NativeKeyEvent_VC_UNDEFINED,
                             (jchar) event->data.keyboard.keychar,
@@ -113,6 +116,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent->init,
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent_NATIVE_MOUSE_PRESSED,
                         (jint) event->mask,
+                        (jint) event->extraInfo,
                         (jint) event->data.mouse.x,
                         (jint) event->data.mouse.y,
                         (jint) event->data.mouse.clicks,
@@ -126,6 +130,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent->init,
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent_NATIVE_MOUSE_RELEASED,
                         (jint) event->mask,
+                        (jint) event->extraInfo,
                         (jint) event->data.mouse.x,
                         (jint) event->data.mouse.y,
                         (jint) event->data.mouse.clicks,
@@ -139,6 +144,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent->init,
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent_NATIVE_MOUSE_CLICKED,
                         (jint) event->mask,
+                        (jint) event->extraInfo,
                         (jint) event->data.mouse.x,
                         (jint) event->data.mouse.y,
                         (jint) event->data.mouse.clicks,
@@ -152,6 +158,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent->init,
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent_NATIVE_MOUSE_MOVED,
                         (jint) event->mask,
+                        (jint) event->extraInfo,
                         (jint) event->data.mouse.x,
                         (jint) event->data.mouse.y,
                         (jint) event->data.mouse.clicks,
@@ -165,6 +172,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent->init,
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent_NATIVE_MOUSE_DRAGGED,
                         (jint) event->mask,
+                        (jint) event->extraInfo,
                         (jint) event->data.mouse.x,
                         (jint) event->data.mouse.y,
                         (jint) event->data.mouse.clicks,
@@ -178,6 +186,7 @@ void jni_EventDispatcher(uiohook_event * const event) {
                         com_github_kwhat_jnativehook_mouse_NativeMouseWheelEvent->init,
                         com_github_kwhat_jnativehook_mouse_NativeMouseEvent_NATIVE_MOUSE_WHEEL,
                         (jint) event->mask,
+                        (jint) event->extraInfo,
                         (jint) event->data.wheel.x,
                         (jint) event->data.wheel.y,
                         (jint) event->data.wheel.clicks,

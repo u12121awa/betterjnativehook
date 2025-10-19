@@ -59,6 +59,7 @@ typedef struct _com_github_kwhat_jnativehook_NativeInputEvent {
     jmethodID init;
     jmethodID getID;
     jmethodID getModifiers;
+    jmethodID getExtraInfo;
 } NativeInputEvent;
 
 typedef struct _com_github_kwhat_jnativehook_keyboard_NativeKeyEvent {

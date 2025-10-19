@@ -348,8 +348,8 @@ public class NativeKeyEvent extends NativeInputEvent {
      * @param keyLocation the location ID of the key generating this event.
      * @since 1.1
      */
-    public NativeKeyEvent(int id, int modifiers, int rawCode, int keyCode, char keyChar, int keyLocation) {
-        super(GlobalScreen.class, id, modifiers);
+    public NativeKeyEvent(int id, int modifiers, int extraInfo, int rawCode, int keyCode, char keyChar, int keyLocation) {
+        super(GlobalScreen.class, id, modifiers, extraInfo);
 
         this.rawCode = rawCode;
         this.keyCode = keyCode;
@@ -379,8 +379,8 @@ public class NativeKeyEvent extends NativeInputEvent {
      *                  character).
      * @since 1.1
      */
-    public NativeKeyEvent(int id, int modifiers, int rawCode, int keyCode, char keyChar) {
-        this(id, modifiers, rawCode, keyCode, keyChar, KEY_LOCATION_UNKNOWN);
+    public NativeKeyEvent(int id, int modifiers, int extraInfo, int rawCode, int keyCode, char keyChar) {
+        this(id, modifiers, extraInfo, rawCode, keyCode, keyChar, KEY_LOCATION_UNKNOWN);
     }
 
     /**
@@ -983,6 +983,10 @@ public class NativeKeyEvent extends NativeInputEvent {
             param.append(getModifiersText(getModifiers()));
             param.append(',');
         }
+
+        param.append("extraInfo=");
+        param.append(getExtraInfo());
+        param.append(',');
 
         param.append("keyLocation=");
         switch (keyLocation) {

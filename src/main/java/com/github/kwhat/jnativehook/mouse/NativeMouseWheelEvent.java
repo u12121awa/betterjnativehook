@@ -130,12 +130,12 @@ public class NativeMouseWheelEvent extends NativeMouseEvent {
      * @param scrollAmount  for scrollType <code>WHEEL_UNIT_SCROLL</code>, the number of units to be
      *                      scrolled.
      * @param wheelRotation the amount that the mouse wheel was rotated (the number of "clicks")
-     * @see #NativeMouseWheelEvent(int, int, int, int, int, int, int, int, int)
-     * @see NativeMouseEvent#NativeMouseEvent(int, int, int, int, int)
+     * @see #NativeMouseWheelEvent(int, int, int, int, int, int, int, int, int, int)
+     * @see NativeMouseEvent#NativeMouseEvent(int, int, int, int, int, int)
      */
-    public NativeMouseWheelEvent(int id, int modifiers, int x, int y, int clickCount,
+    public NativeMouseWheelEvent(int id, int modifiers, int extraInfo, int x, int y, int clickCount,
         int scrollType, int scrollAmount, int wheelRotation) {
-        this(id, modifiers, x, y, clickCount, scrollType, scrollAmount, wheelRotation,
+        this(id, modifiers, extraInfo, x, y, clickCount, scrollType, scrollAmount, wheelRotation,
             WHEEL_VERTICAL_DIRECTION);
     }
 
@@ -161,12 +161,12 @@ public class NativeMouseWheelEvent extends NativeMouseEvent {
      * @param wheelDirection the direction of scrolling which should take place in response to this
      *                       event;  valid values are <code>WHEEL_VERTICAL_DIRECTION</code> and
      *                       <code>WHEEL_HORIZONTAL_DIRECTION</code>.
-     * @see NativeMouseEvent#NativeMouseEvent(int, int, int, int, int)
+     * @see NativeMouseEvent#NativeMouseEvent(int, int, int, int, int, int)
      * @since 2.1
      */
-    public NativeMouseWheelEvent(int id, int modifiers, int x, int y, int clickCount,
+    public NativeMouseWheelEvent(int id, int modifiers, int extraInfo, int x, int y, int clickCount,
         int scrollType, int scrollAmount, int wheelRotation, int wheelDirection) {
-        super(id, modifiers, x, y, clickCount);
+        super(id, modifiers, extraInfo, x, y, clickCount);
 
         this.scrollType = scrollType;
         this.scrollAmount = scrollAmount;

@@ -53,6 +53,8 @@ public class NativeInputEvent extends EventObject {
 
     /** The modifier keys down during event. */
     private int modifiers;
+
+    private int extraInfo;
     
     /** Mask for undocumented behavior.
      * More information available at:
@@ -149,12 +151,13 @@ public class NativeInputEvent extends EventObject {
      * not compatible with the extended _DOWN_MASK or the old _MASK
      * <code>InputEvent</code> modifiers.
      */
-    public NativeInputEvent(Class<GlobalScreen> source, int id, int modifiers) {
+    public NativeInputEvent(Class<GlobalScreen> source, int id, int modifiers, int extraInfo) {
         super(source);
 
         this.id = id;
         this.when = 0;
         this.modifiers = modifiers;
+        this.extraInfo = extraInfo;
         this.reserved = 0x00;
     }
 
@@ -185,6 +188,10 @@ public class NativeInputEvent extends EventObject {
         return this.modifiers;
     }
 
+    public int getExtraInfo() {
+        return extraInfo;
+    }
+
     /**
      * Sets the modifier flags for this event.
      *
@@ -193,6 +200,10 @@ public class NativeInputEvent extends EventObject {
      */
     public void setModifiers(int modifiers) {
         this.modifiers = modifiers;
+    }
+
+    public void setExtraInfo(int extraInfo) {
+        this.extraInfo = extraInfo;
     }
 
     /**
@@ -309,7 +320,8 @@ public class NativeInputEvent extends EventObject {
         String param = "id=" + getID() + ','
             + "when=" + getWhen() + ','
             + "mask=" + Integer.toBinaryString(getModifiers()) + ','
-            + "modifiers=" + getModifiersText(getModifiers());
+            + "modifiers=" + getModifiersText(getModifiers()) + ","
+            + "extraInfo=" + getExtraInfo();
         
         return param;
     }

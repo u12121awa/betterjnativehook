@@ -207,8 +207,8 @@ public class NativeMouseEvent extends NativeInputEvent {
      * @param clickCount the number of button clicks associated with this event.
      * @since 1.1
      */
-    public NativeMouseEvent(int id, int modifiers, int x, int y, int clickCount) {
-        this(id, modifiers, x, y, clickCount, NOBUTTON);
+    public NativeMouseEvent(int id, int modifiers, int extraInfo, int x, int y, int clickCount) {
+        this(id, modifiers, extraInfo, x, y, clickCount, NOBUTTON);
     }
 
     /**
@@ -227,8 +227,8 @@ public class NativeMouseEvent extends NativeInputEvent {
      *                   BUTTON3, BUTTON5 or BUTTON5.
      * @since 1.1
      */
-    public NativeMouseEvent(int id, int modifiers, int x, int y, int clickCount, int button) {
-        super(GlobalScreen.class, id, modifiers);
+    public NativeMouseEvent(int id, int modifiers, int extraInfo, int x, int y, int clickCount, int button) {
+        super(GlobalScreen.class, id, modifiers, extraInfo);
 
         this.x = x;
         this.y = y;
@@ -342,6 +342,9 @@ public class NativeMouseEvent extends NativeInputEvent {
             param.append(",modifiers=");
             param.append(getModifiersText(getModifiers()));
         }
+        param.append("extraInfo=");
+        param.append(getExtraInfo());
+        param.append(',');
 
         param.append(",clickCount=");
         param.append(getClickCount());

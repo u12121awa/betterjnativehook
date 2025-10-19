@@ -220,6 +220,9 @@ static int create_NativeInputEvent(JNIEnv *env) {
         // Get the method ID for NativeInputEvent.getModifiers().
         jmethodID getModifiers = (*env)->GetMethodID(env, NativeInputEvent_class, "getModifiers", "()I");
 
+        jmethodID getExtraInfo = (*env)->GetMethodID(env, NativeInputEvent_class, "getExtraInfo", "()I");
+
+
         if ((*env)->ExceptionCheck(env) == JNI_FALSE) {
             com_github_kwhat_jnativehook_NativeInputEvent = malloc(sizeof(NativeInputEvent));
             if (com_github_kwhat_jnativehook_NativeInputEvent != NULL) {
@@ -230,6 +233,7 @@ static int create_NativeInputEvent(JNIEnv *env) {
                 com_github_kwhat_jnativehook_NativeInputEvent->init = init;
                 com_github_kwhat_jnativehook_NativeInputEvent->getID = getID;
                 com_github_kwhat_jnativehook_NativeInputEvent->getModifiers = getModifiers;
+                com_github_kwhat_jnativehook_NativeInputEvent->getExtraInfo = getExtraInfo;
 
                 status = JNI_OK;
             } else {

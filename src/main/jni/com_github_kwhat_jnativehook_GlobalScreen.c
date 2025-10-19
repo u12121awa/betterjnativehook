@@ -23,11 +23,10 @@
 #include "jni_Globals.h"
 #include "jni_Logger.h"
 #include "jni_Errors.h"
-#include "com_github_kwhat_jnativehook_NativeInputEvent.h"
-#include "com_github_kwhat_jnativehook_keyboard_NativeKeyEvent.h"
-#include "com_github_kwhat_jnativehook_mouse_NativeMouseEvent.h"
-#include "com_github_kwhat_jnativehook_mouse_NativeMouseWheelEvent.h"
-#include "com_github_kwhat_jnativehook_GlobalScreen.h"
+#include "include/com_github_kwhat_jnativehook_NativeInputEvent.h"
+#include "include/com_github_kwhat_jnativehook_keyboard_NativeKeyEvent.h"
+#include "include/com_github_kwhat_jnativehook_mouse_NativeMouseEvent.h"
+#include "include/com_github_kwhat_jnativehook_mouse_NativeMouseWheelEvent.h"
 
 
 JNIEXPORT void JNICALL Java_com_github_kwhat_jnativehook_GlobalScreen_00024NativeHookThread_enable(JNIEnv *env, jobject Thread_obj) {
@@ -141,6 +140,8 @@ JNIEXPORT void JNICALL Java_com_github_kwhat_jnativehook_GlobalScreen_postNative
 
     // Convert Java event to virtual event.
     virtualEvent.mask = (unsigned int) (*env)->CallIntMethod(env, NativeInputEvent_obj, com_github_kwhat_jnativehook_NativeInputEvent->getModifiers);
+
+    virtualEvent.extraInfo = (int) (*env)->CallIntMethod(env, NativeInputEvent_obj, com_github_kwhat_jnativehook_NativeInputEvent->getExtraInfo);
 
     switch (javaType) {
         case com_github_kwhat_jnativehook_keyboard_NativeKeyEvent_NATIVE_KEY_TYPED:

@@ -20,10 +20,10 @@
 #include <uiohook.h>
 
 #include "jni_Converter.h"
-#include "com_github_kwhat_jnativehook_NativeInputEvent.h"
-#include "com_github_kwhat_jnativehook_keyboard_NativeKeyEvent.h"
-#include "com_github_kwhat_jnativehook_mouse_NativeMouseEvent.h"
-#include "com_github_kwhat_jnativehook_mouse_NativeMouseWheelEvent.h"
+#include "include/com_github_kwhat_jnativehook_NativeInputEvent.h"
+#include "include/com_github_kwhat_jnativehook_keyboard_NativeKeyEvent.h"
+#include "include/com_github_kwhat_jnativehook_mouse_NativeMouseEvent.h"
+#include "include/com_github_kwhat_jnativehook_mouse_NativeMouseWheelEvent.h"
 
 
 jint jni_ConvertToJavaType(event_type nativeType, jint *javaType) {
